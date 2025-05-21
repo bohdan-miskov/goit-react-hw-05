@@ -1,0 +1,14 @@
+.mainInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.poster {
+  width: 30%;
+  height: auto;
+  /* display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 12px; */
+}

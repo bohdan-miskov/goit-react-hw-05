@@ -4,6 +4,7 @@ import { getMovieCastById } from "../../services/movieApi";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import MovieCastItem from "../MovieCastItem/MovieCastItem";
+import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const [cast, setCast] = useState([]);
@@ -29,17 +30,20 @@ export default function MovieCast() {
   }, [movieId]);
 
   return (
-    <ul>
-      {cast.length > 0 &&
+    <ul className={css.list}>
+      {cast.length > 0 ? (
         cast.map(({ id, name, character, profile_path }) => (
-          <li key={id}>
+          <li className={css.item} key={id}>
             <MovieCastItem
               name={name}
               character={character}
               profile_path={profile_path}
             />
           </li>
-        ))}
+        ))
+      ) : (
+        <p>We don't have information about cast for this movie.</p>
+      )}
       {isLoading && <Loader />}
       {error && <ErrorMessage>Something was wrong</ErrorMessage>}
     </ul>

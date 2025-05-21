@@ -1,3 +1,5 @@
+import css from "./MovieInfo.module.css";
+
 export default function MovieInfo({
   title,
   overview,
@@ -7,11 +9,12 @@ export default function MovieInfo({
 }) {
   return (
     <div>
-      <div>
+      <div className={css.mainInfo}>
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           alt={title}
-          height={300}
+          width={300}
+          className={css.poster}
         />
         <div>
           <h2>{title}</h2>
@@ -22,7 +25,6 @@ export default function MovieInfo({
           <p>{genres.map(({ name }) => name).join(" ")}</p>
         </div>
       </div>
-      <p>Additional information</p>
     </div>
   );
 }

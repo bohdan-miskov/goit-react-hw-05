@@ -2,6 +2,7 @@
   padding: 24px;
   background-color: rgba(0, 0, 255, 0.295);
   margin-bottom: 20px;
+  border-radius: 20px;
 }
 .form {
   width: 100%;

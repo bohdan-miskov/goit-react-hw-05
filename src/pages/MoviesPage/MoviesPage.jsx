@@ -7,6 +7,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { useSearchParams } from "react-router-dom";
+import Text from "../../components/Text/Text";
 
 export default function MoviesPage() {
   const QUERY_KEY = "query";
@@ -15,6 +16,7 @@ export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isFind, setIsFind] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,8 +37,10 @@ export default function MoviesPage() {
       setIsLoading(true);
       setError(null);
       setMovies([]);
+      setIsFind(true);
       try {
         const data = await getMoviesByQuery(query);
+        if (data.length == 0) setIsFind(false);
         setMovies(data);
       } catch (error) {
         setError(error);
@@ -66,6 +70,11 @@ export default function MoviesPage() {
         </form>
       </header>
       {movies.length > 0 && <MovieList movies={movies} />}
+      {!isFind && (
+        <Text textAlign="center">
+          We don't have any movies with current name.
+        </Text>
+      )}
       {isLoading && <Loader />}
       {error && <ErrorMessage>Something was wrong</ErrorMessage>}
     </>

@@ -1,5 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import css from "./MovieItem.module.css";
 
 export default function MovieItem({ id, title }) {
-  return <Link to={`/movies/${id}`}>{title}</Link>;
+  const location = useLocation();
+  return (
+    <Link className={css.link} to={`/movies/${id}`} state={location.pathname}>
+      {title}
+    </Link>
+  );
 }

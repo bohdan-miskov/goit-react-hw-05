@@ -3,6 +3,7 @@ import { getTrendingToday } from "../../services/movieApi";
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import css from "./HomePage.module.css";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -28,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      <h1>Trending todays</h1>
+      <h1 className={css.title}>Trending todays</h1>
       {movies.length > 0 && <MovieList movies={movies} />}
       {isLoading && <Loader />}
       {error && <ErrorMessage>Something was wrong</ErrorMessage>}

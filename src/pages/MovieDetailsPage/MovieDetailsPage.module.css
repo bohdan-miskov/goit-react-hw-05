@@ -1,0 +1,22 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.backLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.links {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.link {
+  font-weight: 600;
+  text-decoration: underline;
+}
+.link.active {
+  color: red;
+  text-decoration: none;
+}
