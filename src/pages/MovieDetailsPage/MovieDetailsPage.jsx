@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { getMovieById } from "../../services/movieApi";
@@ -14,7 +14,8 @@ export default function MovieDetailsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const backPath = useLocation().state?.pathname;
+  const state = useLocation().state;
+  const backPath = useRef(state.pathname);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function MovieDetailsPage() {
   }, [movieId]);
   return (
     <div className={css.container}>
-      <Link className={css.backLink} to={backPath ?? "/movies"}>
+      <Link className={css.backLink} to={backPath.current ?? "/movies"}>
         <IoMdArrowBack size="20px" />
         Go back
       </Link>
