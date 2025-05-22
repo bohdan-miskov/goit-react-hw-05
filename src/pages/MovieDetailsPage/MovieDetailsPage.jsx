@@ -15,7 +15,7 @@ export default function MovieDetailsPage() {
   const [error, setError] = useState(null);
 
   const state = useLocation().state;
-  const backPath = useRef(state.pathname);
+  const backPath = useRef(state);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -36,7 +36,10 @@ export default function MovieDetailsPage() {
   }, [movieId]);
   return (
     <div className={css.container}>
-      <Link className={css.backLink} to={backPath.current ?? "/movies"}>
+      <Link
+        className={css.backLink}
+        to={backPath.current?.pathname ?? "/movies"}
+      >
         <IoMdArrowBack size="20px" />
         Go back
       </Link>
