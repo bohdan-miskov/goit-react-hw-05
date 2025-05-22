@@ -38,7 +38,7 @@ export default function MovieDetailsPage() {
     <div className={css.container}>
       <Link
         className={css.backLink}
-        to={backPath.current?.pathname ?? "/movies"}
+        to={backPath.current ?? "/movies"}
       >
         <IoMdArrowBack size="20px" />
         Go back
